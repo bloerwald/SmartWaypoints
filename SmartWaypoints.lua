@@ -11,7 +11,9 @@ SLASH_SmartWaypoints1 = '/smartwaypoints'
 SLASH_SmartWaypoints2 = '/swpt'
 SlashCmdList['SmartWaypoints'] = function(msg)
   local old_mode = SmartWaypointsMode
-  if msg == '' or msg == 'help' then
+
+  msg = string.lower(msg)
+  if msg == '' or msg == 'help' or msg == SWp.L.SLASHHELP then
     SWp.log('cycle: ' .. SWp.L.SLASHHELP_CYCLE)
     for k, _ in pairs(SWp.modes) do
       SWp.log(k .. ': ' .. SWp.L[k])
@@ -27,7 +29,6 @@ SlashCmdList['SmartWaypoints'] = function(msg)
       SmartWaypointsMode = MODE_NEVER
     end
   else
-    msg = string.lower(msg)
     if SWp.modes[msg] then
       SmartWaypointsMode = msg
     else
@@ -141,10 +142,11 @@ local Ls = {
       return 'Unknown mode: ' .. mode .. ' (known: ' .. known_modes .. ')'
     end,
     UNKNOWN_TARGET = 'Unknown target',
-    MODE_NEVER = 'Never show any waypoints',
-    MODE_MARK = 'Mark waypoints as suggestions',
-    MODE_ONLYTARGET = 'Show only the target to reach, no suggestions',
-    MODE_BLIZZARD = 'Use Blizzard behaviour',
+    [MODE_NEVER] = 'Never show any waypoints',
+    [MODE_MARK] = 'Mark waypoints as suggestions',
+    [MODE_ONLYTARGET] = 'Show only the target to reach, no suggestions',
+    [MODE_BLIZZARD] = 'Use Blizzard behaviour',
+    SLASHHELP = 'help',
     SLASHHELP_CYCLE = 'cycle between available modes',
   },
   deDE = {
@@ -161,10 +163,11 @@ local Ls = {
       return 'Unbekannter Modus: ' .. mode .. ' (verfügbar: ' .. known_modes .. ')'
     end,
     UNKNOWN_TARGET = 'Unbekanntes Ziel',
-    MODE_NEVER = 'Zeige niemals Wegpunkte',
-    MODE_MARK = 'Markiere Wegpunkte als Vorschläge',
-    MODE_ONLYTARGET = 'Zeige nur das Ziel, keine Vorschläge',
-    MODE_BLIZZARD = 'Nutze Blizzard Verhalten',
+    [MODE_NEVER] = 'Zeige niemals Wegpunkte',
+    [MODE_MARK] = 'Markiere Wegpunkte als Vorschläge',
+    [MODE_ONLYTARGET] = 'Zeige nur das Ziel, keine Vorschläge',
+    [MODE_BLIZZARD] = 'Nutze Blizzard Verhalten',
+    SLASHHELP = 'hilfe',
     SLASHHELP_CYCLE = 'Wechsle zwischen den verschiedenen Modi',
   },
 }
