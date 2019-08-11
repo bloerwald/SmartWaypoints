@@ -1,0 +1,8 @@
+## Interface: 80200
+## Title: SmartWaypoints
+## Author: Schlumpf
+## Notes: Improves the 8.2 quest waypoint hints
+## OptionalDeps:
+## Dependencies:
+## SavedVariables: SmartWaypointsMode
+SmartWaypoints.lua
