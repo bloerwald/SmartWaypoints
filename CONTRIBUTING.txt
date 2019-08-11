@@ -1,0 +1,3 @@
+Either
+- pull-request or issue on https://github.com/bloerwald/SmartWaypoints or
+- contact schlumpf#6709 on Discord directly.
