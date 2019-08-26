@@ -142,7 +142,7 @@ function SWp:initialize_localization()
     },
   }
 
-  self.L = setmetatable (Ls[GetLocale()], {
+  self.L = setmetatable (Ls[GetLocale()] or {}, {
     __index = function(self, key) return Ls['enGB'][key] end
   })
 end
